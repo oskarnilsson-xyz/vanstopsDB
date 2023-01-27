@@ -5,14 +5,14 @@ public class DataValidate {
 
     public boolean Validate(String name, String lat, String longi, String nation) {
         if (name.length() > 45 || name.equals("")) {
-            ErrorWindow errorWindow = new ErrorWindow("Name is longer than 45 characters or empty!");
+            ErrorWindow errorWindow = new ErrorWindow("Name is longer than 45 characters\nor empty!");
             return false;
-        }
+        }//REGEX catches numbers with more than 3 didgits before decimal and that doesn't have atleast 5 to 8 digits after decimal
         if (!lat.matches("-?([0-9]{1,3})+([.][0-9]{5,8})")) {
             ErrorWindow errorWindow = new ErrorWindow("Lat should have 5-8 digits after the decimal[.]!");
             return false;
         }
-        if (Double.parseDouble(lat) > 180 || Double.parseDouble(lat) < -180) {
+        if (Double.parseDouble(lat) > 180 || Double.parseDouble(lat) < -180) { //Catches invalid lat numbers
             ErrorWindow errorWindow = new ErrorWindow("Lat should be between 180.00000 and -180.00000!");
             return false;
         }

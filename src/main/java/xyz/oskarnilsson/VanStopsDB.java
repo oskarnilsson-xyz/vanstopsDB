@@ -29,7 +29,7 @@ public class VanStopsDB extends JFrame {
     public VanStopsDB() {
         setContentPane(VanStopsDB);
         setTitle("VanStops");
-        setSize(1260, 800);
+        setSize(1260, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -37,10 +37,10 @@ public class VanStopsDB extends JFrame {
         euField.setEditable(false);
         overnightField.setEditable(false);
         tagsField.setEditable(false);
-        table.setDefaultEditor(Object.class, null);
+        table.setDefaultEditor(Object.class, null); //locks the table from user input
 
 
-        btnFetchData.addActionListener(new ActionListener() {
+        btnFetchData.addActionListener(new ActionListener() { //Fetches data
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -51,7 +51,7 @@ public class VanStopsDB extends JFrame {
         });
 
 
-        table.addMouseListener(new MouseAdapter() {
+        table.addMouseListener(new MouseAdapter() { //Actionlistener that lets the program know what row was selected and the populates the text fields
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -66,7 +66,7 @@ public class VanStopsDB extends JFrame {
                 tagsField.setText(model.getValueAt(selectedRow, 6).toString());
             }
         });
-        addStopButton.addMouseListener(new MouseAdapter() {
+        addStopButton.addMouseListener(new MouseAdapter() {  //Validates data before adding to DB
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -77,7 +77,7 @@ public class VanStopsDB extends JFrame {
 
             }
         });
-        updateStopButton.addMouseListener(new MouseAdapter() {
+        updateStopButton.addMouseListener(new MouseAdapter() { //Validates data before adding to DB
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -98,21 +98,21 @@ public class VanStopsDB extends JFrame {
                 dbconnect.DBConnectDelete(nameField.getText());
             }
         });
-        searchNameButton.addMouseListener(new MouseAdapter() {
+        searchNameButton.addMouseListener(new MouseAdapter() { //Populates table based on the name textfield contents
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 table.setModel(dbconnect.DBConnectAllviewNameSearch(nameField.getText()));
             }
         });
-        searchNationButton.addMouseListener(new MouseAdapter() {
+        searchNationButton.addMouseListener(new MouseAdapter() { //Populates table based on the nation textfield contents
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 table.setModel(dbconnect.DBConnectAllviewNationSearch(nationField.getText()));
             }
         });
-        manageTagsButton.addMouseListener(new MouseAdapter() {
+        manageTagsButton.addMouseListener(new MouseAdapter() { //Opens a window to modify tags based on name textfield contents
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);

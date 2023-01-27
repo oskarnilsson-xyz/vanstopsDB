@@ -9,10 +9,10 @@ public class ErrorWindow extends JFrame {
     private JTextArea errorText;
     private JPanel ErrorWindow;
 
-    public ErrorWindow(String text) {
+    public ErrorWindow(String text) { //Gets the error message from the validator.
         setContentPane(ErrorWindow);
         setTitle("Error");
-        setSize(250, 250);
+        setSize(200, 150);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);

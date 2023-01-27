@@ -9,7 +9,7 @@ public class DBConnect {
     String username = "root";
     String password = "r1F7$M4aU3&i";
 
-    public void DBConnectNewStop(String newName, String newLat, String newLong, String newNation) {
+    public void DBConnectNewStop(String newName, String newLat, String newLong, String newNation) { //Adds a stop
         int newNationID = DBConnectNationID(newNation);
         newNation = newNation.substring(0, 1).toUpperCase() + newNation.substring(1).toLowerCase();
 
@@ -34,7 +34,7 @@ public class DBConnect {
 
     }
 
-    public DefaultTableModel DBConnectAllview() {
+    public DefaultTableModel DBConnectAllview() { //fetches data from the allView and passes it on as a model
         DefaultTableModel model = new DefaultTableModel(new String[]{"name", "lat", "long", "nation", "eu", "overnight friendly", "tags"}, 0);
 
         try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
@@ -68,7 +68,7 @@ public class DBConnect {
         return model;
     }
 
-    public int DBConnectNationID(String nationName) {
+    public int DBConnectNationID(String nationName) { //Gets nation ID from a name, might be redundant with a propper stored procedure
         int nationID = 0;
         nationName = nationName.substring(0, 1).toUpperCase() + nationName.substring(1).toLowerCase();
         try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
@@ -89,7 +89,7 @@ public class DBConnect {
         return nationID;
     }
 
-    public void DBConnectUpdate(String newName, String newLat, String newLong, String newNation, String oldName) {
+    public void DBConnectUpdate(String newName, String newLat, String newLong, String newNation, String oldName) { //Updates an existing stop.
         int newNationID = DBConnectNationID(newNation);
         newNation = newNation.substring(0, 1).toUpperCase() + newNation.substring(1).toLowerCase();
 
@@ -116,7 +116,7 @@ public class DBConnect {
 
     }
 
-    public void DBConnectDelete(String stopToDelete) {
+    public void DBConnectDelete(String stopToDelete) { //Removes a stop
 
 
         try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
@@ -138,7 +138,7 @@ public class DBConnect {
 
     }
 
-    public DefaultTableModel DBConnectAllviewNameSearch(String nameSearch) {
+    public DefaultTableModel DBConnectAllviewNameSearch(String nameSearch) {  //Fetches from the allview view with a name search string
         DefaultTableModel model = new DefaultTableModel(new String[]{"name", "lat", "long", "nation", "eu", "overnight friendly", "tags"}, 0);
 
         try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
@@ -169,7 +169,7 @@ public class DBConnect {
         return model;
     }
 
-    public DefaultTableModel DBConnectAllviewNationSearch(String nationSearch) {
+    public DefaultTableModel DBConnectAllviewNationSearch(String nationSearch) { //Fetches from the allview view with a nations search string
         DefaultTableModel model = new DefaultTableModel(new String[]{"name", "lat", "long", "nation", "eu", "overnight friendly", "tags"}, 0);
 
         try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
@@ -200,7 +200,7 @@ public class DBConnect {
         return model;
     }
 
-    public DefaultTableModel DBConnectTagTable() {
+    public DefaultTableModel DBConnectTagTable() { //Fetches the Tag names to be used in the addtag window
         DefaultTableModel model = new DefaultTableModel(new String[]{"tag"}, 0);
 
         try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
@@ -226,7 +226,7 @@ public class DBConnect {
         return model;
     }
 
-    public void DBConnectAddTag(String stop, String tag) {
+    public void DBConnectAddTag(String stop, String tag) { //Adds the selected tag
         try (
 
                 Connection conn = DriverManager.getConnection(dbURL, username, password);
@@ -247,7 +247,7 @@ public class DBConnect {
         }
     }
 
-    public void DBConnectRemoveTag(String stop, String tag) {
+    public void DBConnectRemoveTag(String stop, String tag) { //Removes the selected tag
         try (
 
                 Connection conn = DriverManager.getConnection(dbURL, username, password);

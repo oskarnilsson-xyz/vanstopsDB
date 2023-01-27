@@ -18,7 +18,7 @@ public class AddTag extends JFrame {
     public AddTag(String selectedStop) {
         setContentPane(addTag);
         setTitle("Add tag");
-        setSize(500, 500);
+        setSize(300, 500);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -42,7 +42,7 @@ public class AddTag extends JFrame {
                 dispose();
             }
         });
-        table.addMouseListener(new MouseAdapter() {
+        table.addMouseListener(new MouseAdapter() { //Passes on text of selected field to text field
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -51,7 +51,7 @@ public class AddTag extends JFrame {
                 selectedTag.setText(model.getValueAt(selectedRow, 0).toString());
             }
         });
-        removeTagButton.addMouseListener(new MouseAdapter() {
+        removeTagButton.addMouseListener(new MouseAdapter() { //Remove tag
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
